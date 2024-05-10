@@ -13,7 +13,7 @@ export default function Home() {
 
     // Make a POST request to the FastAPI endpoint
     try {
-      const response=await axios.post('http://127.0.0.1:8000/predict_sentiment',{
+      const response=await axios.post('https://backend-zgdl.onrender.com/predict_sentiment',{
         tweet: tweet,
       })
       console.log(response.data.sentiment);
