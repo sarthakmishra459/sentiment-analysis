@@ -13,7 +13,7 @@ export default function Home() {
 
     // Make a POST request to the FastAPI endpoint
     try {
-      const response=await axios.post('https://backend-zgdl.onrender.com/predict_sentiment',{
+      const response = await axios.post('https://backend-n3v3.onrender.com/predict_sentiment', {
         tweet: tweet,
       })
       console.log(response.data.sentiment);
@@ -21,10 +21,10 @@ export default function Home() {
     } catch (error) {
       console.log(error);
     }
-    
+
 
     // Parse the JSON response
-    
+
 
     // Update the state with the predicted sentiment
     setSentiment(data.sentiment);
