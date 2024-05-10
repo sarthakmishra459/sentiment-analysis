@@ -1,4 +1,5 @@
 "use client"
+import axios from 'axios';
 import { useState } from 'react';
 
 export default function Home() {
@@ -11,16 +12,19 @@ export default function Home() {
     e.preventDefault();
 
     // Make a POST request to the FastAPI endpoint
-    const response = await fetch('https://backend-zgdl.onrender.com/predict_sentiment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ tweet }),
-    });
+    try {
+      const response=await axios.post('http://127.0.0.1:8000/predict_sentiment',{
+        tweet: tweet,
+      })
+      console.log(response.data.sentiment);
+      setSentiment(response.data.sentiment);
+    } catch (error) {
+      console.log(error);
+    }
+    
 
     // Parse the JSON response
-    const data = await response.json();
+    
 
     // Update the state with the predicted sentiment
     setSentiment(data.sentiment);
